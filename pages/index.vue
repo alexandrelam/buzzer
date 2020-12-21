@@ -11,17 +11,17 @@
       <h1>Buzzer!</h1>
       <div class="wrapper">
         <img src="/playing_games.svg" alt="playing_games" />
-        <LoginInput class="login-form" />
+        <LoginForm class="login-form" />
       </div>
     </section>
   </html>
 </template>
 
 <script>
-import LoginInput from "../components/LoginInput.vue";
+import LoginForm from "../components/LoginForm.vue";
 export default {
   components: {
-    LoginInput,
+    LoginForm,
   },
 };
 </script>
