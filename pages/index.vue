@@ -11,7 +11,7 @@
       <h1>Buzzer!</h1>
       <div class="wrapper">
         <img src="/playing_games.svg" alt="playing_games" />
-        <LoginInput />
+        <LoginInput class="login-form" />
       </div>
     </section>
   </html>
@@ -41,7 +41,7 @@ h1 {
   font-weight: 700;
   font-style: italic;
   margin: auto;
-  margin-top: 200px;
+  margin-top: 20vh;
 }
 img {
   width: 480px;
@@ -50,5 +50,19 @@ img {
 .wrapper {
   display: flex;
   justify-content: center;
+}
+.login-form {
+  margin-top: 55px;
+}
+
+@media only screen and (max-width: 800px) {
+  img {
+    display: none;
+  }
+}
+@media only screen and (max-width: 400px) {
+  h1 {
+    margin-top: 100px;
+  }
 }
 </style>
