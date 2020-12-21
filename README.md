@@ -1,5 +1,7 @@
 # buzzer
 
+![image](https://user-images.githubusercontent.com/25727549/102818944-dcb56280-43d2-11eb-805d-4a1c83b153b6.png)
+
 ## Build Setup
 
 ```bash
