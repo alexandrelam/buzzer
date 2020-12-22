@@ -9,12 +9,16 @@
       placeholder="Rentrez un prénom"
     />
     <a-checkbox class="checkbox" @change="onChange"> Je suis admin </a-checkbox>
-    <a-button type="primary"> Go! </a-button>
+    <a-button @click="getData" type="primary"> Go! </a-button>
   </div>
 </template>
 
 <script>
 export default {
+  mounted: function () {
+    const messageRef = this.$fire.database.ref("username");
+    messageRef.on("value", (snap) => console.log(snap.val()));
+  },
   methods: {
     onChange(e) {
       console.log("checked " + e.target.checked);
@@ -55,3 +59,5 @@ button {
   }
 }
 </style>
+
+
