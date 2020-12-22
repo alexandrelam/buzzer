@@ -2,26 +2,56 @@
   <div class="inputs">
     <p>Prénom</p>
     <a-input
+      @change="handleNameChange"
       v-decorator="[
         'prenom',
         { rules: [{ required: true, message: 'Rentrez un nom!' }] },
       ]"
       placeholder="Rentrez un prénom"
     />
-    <a-checkbox class="checkbox" @change="onChange"> Je suis admin </a-checkbox>
-    <a-button @click="getData" type="primary"> Go! </a-button>
+    <a-checkbox class="checkbox" @change="handleCheckChange">
+      Je suis admin
+    </a-checkbox>
+    <NuxtLink to="/app"
+      ><a-button html-type="submit" @click="submitData" type="primary">
+        Go!
+      </a-button></NuxtLink
+    >
   </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
+  data: function () {
+    return {
+      name: "default_user",
+      isAdmin: false,
+    };
+  },
   mounted: function () {
-    const messageRef = this.$fire.database.ref("username");
+    const messageRef = this.$fire.database.ref("users");
     messageRef.on("value", (snap) => console.log(snap.val()));
   },
   methods: {
-    onChange(e) {
-      console.log("checked " + e.target.checked);
+    ...mapMutations({
+      setName: "setName",
+    }),
+    handleCheckChange(e) {
+      this.isAdmin = e.target.checked;
+    },
+    handleNameChange(e) {
+      this.name = e.target.value;
+    },
+    submitData() {
+      this.setName(this.name);
+      console.log(this.name);
+      this.$fire.database.ref("users/" + this.name).set({
+        username: this.name,
+        isAdmin: this.isAdmin,
+        buzz_time: "",
+      });
     },
   },
 };
@@ -48,11 +78,16 @@ input {
   width: 400px;
   height: 48px;
 }
-
-button {
+a {
   margin-top: 70px;
   height: 56px;
 }
+
+button {
+  width: 400px;
+  height: 56px;
+}
+
 @media only screen and (max-width: 400px) {
   input {
     width: 300px;
