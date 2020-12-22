@@ -32,6 +32,11 @@ export default {
   },
   methods: {
     processData(snap) {
+      // When getting the date from firebase we get
+      // ISO 8601.
+      // 1. we convert to the right format for antd table
+      // 2. we sort the iso timestamp with lexicosort
+      // 3. We reformat the date to be readable
       this.convert_to_data(snap);
       this.sortDate();
       this.reformatDate();
