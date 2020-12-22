@@ -2,7 +2,7 @@
   <div class="connected-user-wrapper">
     <a-icon type="check-circle" theme="twoTone" two-tone-color="#52c41a" />
     <p>Connecté :</p>
-    <a-button v-for="user in users" v-bind:key="user.name" :size="small">{{
+    <a-button v-for="user in users" v-bind:key="user.name">{{
       user.username
     }}</a-button>
   </div>

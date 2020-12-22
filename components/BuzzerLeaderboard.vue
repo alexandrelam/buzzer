@@ -1,5 +1,5 @@
 <template>
-  <a-table pagination="disable" :columns="columns" :data-source="data">
+  <a-table :columns="columns" :data-source="data">
     <span slot="name" slot-scope="text">{{ text }}</span>
     <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
   </a-table>
