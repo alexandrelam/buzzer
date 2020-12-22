@@ -2,14 +2,23 @@
   <div>
     <Header class="header" />
     <h1>Bienvenue {{ $store.state.name }}</h1>
+    <div class="app-wrapper">
+      <BuzzerLeaderboard />
+      <BuzzerButton />
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header";
+import BuzzerButton from "../components/BuzzerButton";
+import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
+
 export default {
   components: {
     Header,
+    BuzzerButton,
+    BuzzerLeaderboard,
   },
 };
 </script>
@@ -23,5 +32,13 @@ h1 {
 
 .header {
   padding: 15px 25px;
+}
+
+.app-wrapper {
+  margin-top: 50px;
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
 }
 </style>

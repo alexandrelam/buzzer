@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="header-wrapper">
     <ConnectedUserList />
     <NuxtLink to="/"
       ><a-button type="danger" @click="handleQuit">
@@ -22,16 +22,15 @@ export default {
     }),
     handleQuit() {
       localStorage.setItem("name", "default_username");
+      localStorage.setItem("isAdmin", false);
       this.$fire.database.ref("users").child(this.$store.state.name).remove();
-      //const loggedInUser = this.$fire.database.ref("users").child(this.name);
-      //loggedInUser.on("value", (snap) => console.log(snap.val()));
       this.setName("default_username");
     },
   },
 };
 </script>
 <style scoped>
-.wrapper {
+.header-wrapper {
   display: flex;
   justify-content: space-between;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="connected-user-wrapper">
     <a-icon type="check-circle" theme="twoTone" two-tone-color="#52c41a" />
     <p>Connecté :</p>
     <a-button v-for="user in users" v-bind:key="user.name" :size="small">{{
@@ -18,8 +18,6 @@ export default {
   mounted: function () {
     const messageRef = this.$fire.database.ref("users");
     messageRef.on("value", (snap) => (this.users = snap.val()));
-    messageRef.on("value", (snap) => console.log(snap.val()));
-    console.log(this.users);
   },
 };
 </script>
@@ -29,7 +27,7 @@ p {
   margin: 0;
   margin-left: 10px;
 }
-.wrapper {
+.connected-user-wrapper {
   display: flex;
   align-items: center;
   flex-wrap: wrap;

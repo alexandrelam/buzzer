@@ -32,7 +32,6 @@ export default {
   },
   mounted: function () {
     const messageRef = this.$fire.database.ref("users");
-    messageRef.on("value", (snap) => console.log(snap.val()));
   },
   methods: {
     ...mapMutations({
@@ -47,6 +46,7 @@ export default {
     submitData() {
       this.setName(this.name);
       localStorage.setItem("name", this.name);
+      localStorage.setItem("isAdmin", this.isAdmin);
       this.$fire.database.ref("users/" + this.name).set({
         username: this.name,
         isAdmin: this.isAdmin,
