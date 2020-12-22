@@ -1,5 +1,5 @@
 export const state = () => ({
-    name: "alex"
+    name: localStorage.getItem("name") || "default_username"
 })
 
 export const mutations = {

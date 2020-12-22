@@ -46,7 +46,7 @@ export default {
     },
     submitData() {
       this.setName(this.name);
-      console.log(this.name);
+      localStorage.setItem("name", this.name);
       this.$fire.database.ref("users/" + this.name).set({
         username: this.name,
         isAdmin: this.isAdmin,

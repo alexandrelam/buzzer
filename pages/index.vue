@@ -7,13 +7,15 @@
         rel="stylesheet"
       />
     </head>
-    <section class="content">
-      <h1>Buzzer!</h1>
-      <div class="wrapper">
-        <img src="/playing_games.svg" alt="playing_games" />
-        <LoginForm class="login-form" />
-      </div>
-    </section>
+    <body>
+      <section class="content">
+        <h1>Buzzer!</h1>
+        <div class="wrapper">
+          <img src="/playing_games.svg" alt="playing_games" />
+          <LoginForm class="login-form" />
+        </div>
+      </section>
+    </body>
   </html>
 </template>
 
@@ -29,6 +31,8 @@ export default {
 <style scoped>
 html {
   font-family: "Cabin";
+  margin: 0;
+  padding: 0;
 }
 
 .content {
