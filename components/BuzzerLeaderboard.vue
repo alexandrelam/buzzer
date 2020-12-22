@@ -34,6 +34,12 @@ export default {
     processData(snap) {
       this.convert_to_data(snap);
       this.sortDate();
+      this.reformatDate();
+    },
+    reformatDate() {
+      this.data.map((user) => {
+        user.buzz_time = user.buzz_time.substr(11, 21);
+      });
     },
     sortDate() {
       this.data.sort(function (a, b) {
