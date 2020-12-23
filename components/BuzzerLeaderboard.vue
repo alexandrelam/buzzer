@@ -43,7 +43,8 @@ export default {
     },
     reformatDate() {
       this.data.map((user) => {
-        user.buzz_time = user.buzz_time.substr(11, 21);
+        this.ISOtoTime(user.buzz_time);
+        user.buzz_time = this.ISOtoTime(user.buzz_time);
       });
     },
     sortDate() {
@@ -68,6 +69,14 @@ export default {
         };
         this.data.push(new_object);
       });
+    },
+    ISOtoTime(iso) {
+      const time = iso.substr(11, 12);
+      const hour = time.substr(0, 2);
+      const minute = time.substr(3, 2);
+      const seconds = time.substr(6, 2);
+      const milli = time.substr(9, 3);
+      return hour + "h" + minute + "min  " + seconds + "sec" + milli;
     },
   },
 };
