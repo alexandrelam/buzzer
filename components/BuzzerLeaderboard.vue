@@ -72,5 +72,8 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
+.ant-table-pagination.ant-pagination {
+  display: none !important;
+}
 </style>
