@@ -76,7 +76,7 @@ export default {
       const minute = time.substr(3, 2);
       const seconds = time.substr(6, 2);
       const milli = time.substr(9, 3);
-      return hour + "h" + minute + "min  " + seconds + "sec" + milli;
+      return `${hour}h${minute}min    ---     ${seconds}sec ${milli}ms`;
     },
   },
 };
