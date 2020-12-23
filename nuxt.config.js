@@ -3,12 +3,12 @@ export default {
   ssr: false,
 
   // Publish to github pages (https://fr.nuxtjs.org/faq/github-pages/)
-  router: {
-    base: "/buzzer/"
-  },
-  static: {
-    prefix: "/buzzer/"
-  },
+  // router: {
+  //   base: "/buzzer/"
+  // },
+  // static: {
+  //   prefix: "/buzzer/"
+  // },
 
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
@@ -21,7 +21,11 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" }
+    ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
