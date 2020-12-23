@@ -8,7 +8,8 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
+    "deploy": "gh-pages -d dist --dotfiles=true"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.4",
@@ -19,5 +20,8 @@
     "firebase": "^8.2.1",
     "nuxt": "^2.14.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gh-pages": "^3.1.0",
+    "push-dir": "^0.4.1"
+  }
 }

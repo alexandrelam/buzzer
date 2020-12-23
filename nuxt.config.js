@@ -1,18 +1,12 @@
-const routerBase =
-  process.env.DEPLOY_ENV === 'GH_PAGES'
-    ? {
-        router: {
-          base: '/buzzer/'
-        }
-      }
-    : {}
-
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
 
   // Publish to github pages (https://fr.nuxtjs.org/faq/github-pages/)
-  ...routerBase,
+  mode: 'spa',
+  router: {
+     base: '/buzzer/'
+   },
 
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
