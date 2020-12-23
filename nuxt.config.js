@@ -3,9 +3,8 @@ export default {
   ssr: false,
 
   // Publish to github pages (https://fr.nuxtjs.org/faq/github-pages/)
-  mode: 'spa',
   router: {
-     base: '/buzzer/'
+    base: '/buzzer/'
    },
 
   // Target (https://go.nuxtjs.dev/config-target)

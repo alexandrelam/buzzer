@@ -92,6 +92,9 @@ button {
   input {
     width: 300px;
   }
+  button{
+    width: 300px;
+  }
 }
 </style>
 

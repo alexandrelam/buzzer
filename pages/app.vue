@@ -37,8 +37,14 @@ h1 {
 .app-wrapper {
   margin-top: 50px;
   display: flex;
-  gap: 100px;
+  gap: 65px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap-reverse;
+}
+
+
+@media only screen and (max-width: 400px) {
+
 }
 </style>
