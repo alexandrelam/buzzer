@@ -27,7 +27,6 @@ export default {
   data: function () {
     return {
       name: "default_user",
-      isAdmin: false,
     };
   },
   mounted: function () {
@@ -36,9 +35,10 @@ export default {
   methods: {
     ...mapMutations({
       setName: "setName",
+      setIsAdmin: "setIsAdmin",
     }),
     handleCheckChange(e) {
-      this.isAdmin = e.target.checked;
+      this.setIsAdmin(e.target.checked);
     },
     handleNameChange(e) {
       this.name = e.target.value;
@@ -46,10 +46,10 @@ export default {
     submitData() {
       this.setName(this.name);
       localStorage.setItem("name", this.name);
-      localStorage.setItem("isAdmin", this.isAdmin);
+      localStorage.setItem("isAdmin", this.$store.state.isAdmin);
       this.$fire.database.ref("users/" + this.name).set({
         username: this.name,
-        isAdmin: this.isAdmin,
+        isAdmin: this.$store.state.isAdmin,
         buzz_time: "",
       });
     },
@@ -92,7 +92,7 @@ button {
   input {
     width: 300px;
   }
-  button{
+  button {
     width: 300px;
   }
 }
