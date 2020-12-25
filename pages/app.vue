@@ -6,6 +6,10 @@
       <BuzzerLeaderboard />
       <BuzzerButton />
     </div>
+    <ResetLeaderboardButton
+      v-if="this.$store.state.isAdmin"
+      class="btn-reset"
+    />
   </div>
 </template>
 
@@ -13,12 +17,14 @@
 import Header from "../components/Header";
 import BuzzerButton from "../components/BuzzerButton";
 import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
+import ResetLeaderboardButton from "../components/ResetLeaderboardButton";
 
 export default {
   components: {
     Header,
     BuzzerButton,
     BuzzerLeaderboard,
+    ResetLeaderboardButton,
   },
 };
 </script>
@@ -43,8 +49,8 @@ h1 {
   flex-wrap: wrap-reverse;
 }
 
-
-@media only screen and (max-width: 400px) {
-
+.btn-reset {
+  margin-top: 50px;
+  margin-left: 100px;
 }
 </style>

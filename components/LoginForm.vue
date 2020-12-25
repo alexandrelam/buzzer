@@ -27,6 +27,7 @@ export default {
   data: function () {
     return {
       name: "default_user",
+      isAdmin: false,
     };
   },
   mounted: function () {
@@ -38,7 +39,7 @@ export default {
       setIsAdmin: "setIsAdmin",
     }),
     handleCheckChange(e) {
-      this.setIsAdmin(e.target.checked);
+      this.isAdmin = e.target.checked;
     },
     handleNameChange(e) {
       this.name = e.target.value;
@@ -46,7 +47,8 @@ export default {
     submitData() {
       this.setName(this.name);
       localStorage.setItem("name", this.name);
-      localStorage.setItem("isAdmin", this.$store.state.isAdmin);
+      localStorage.setItem("isAdmin", this.isAdmin);
+      this.setIsAdmin(this.isAdmin);
       this.$fire.database.ref("users/" + this.name).set({
         username: this.name,
         isAdmin: this.$store.state.isAdmin,
