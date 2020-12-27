@@ -1,7 +1,8 @@
 <template>
   <div>
     <Header class="header" />
-    <h1>Bienvenue {{ $store.state.name }}</h1>
+
+    <Title />
     <div class="app-wrapper">
       <BuzzerLeaderboard />
       <BuzzerButton />
@@ -18,6 +19,7 @@ import Header from "../components/Header";
 import BuzzerButton from "../components/BuzzerButton";
 import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
 import ResetLeaderboardButton from "../components/ResetLeaderboardButton";
+import Title from "../components/Title";
 
 export default {
   components: {
@@ -25,17 +27,12 @@ export default {
     BuzzerButton,
     BuzzerLeaderboard,
     ResetLeaderboardButton,
+    Title,
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  display: flex;
-  justify-content: center;
-  padding-top: 10vh;
-}
-
 .header {
   padding: 15px 25px;
 }
