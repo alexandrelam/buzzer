@@ -3,7 +3,6 @@ export default {
   ssr: false,
 
   // Publish to github pages (https://fr.nuxtjs.org/faq/github-pages/)
-
   /*
   router: {
     base: "/buzzer/"
@@ -11,8 +10,7 @@ export default {
   static: {
     prefix: "/buzzer/"
   },
- */
-
+*/
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
 
@@ -22,7 +20,7 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
+      { hid: "description", name: "description", content: "" }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/buzzer/favicon.ico" },
@@ -30,9 +28,9 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap",
-      },
-    ],
+          "https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      }
+    ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -59,16 +57,16 @@ export default {
           storageBucket: process.env.STORAGEBUCKET,
           messagingSenderId: process.env.MESSAGINGSENDERID,
           appId: process.env.APPID,
-          measurementId: process.env.MEASUREMENTID,
+          measurementId: process.env.MEASUREMENTID
         },
         services: {
-          database: true,
-        },
-      },
+          database: true
+        }
+      }
     ],
-    ["@nuxtjs/axios"],
+    ["@nuxtjs/axios"]
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {}
 };

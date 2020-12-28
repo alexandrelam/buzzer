@@ -1,16 +1,12 @@
 <template>
   <div>
     <Header class="header" />
-
     <Title />
     <div class="app-wrapper">
       <BuzzerLeaderboard />
       <BuzzerButton />
     </div>
-    <ResetLeaderboardButton
-      v-if="this.$store.state.isAdmin"
-      class="btn-reset"
-    />
+    <ResetLeaderboardButton v-if="this.$store.state.isAdmin" class="btn-reset" />
   </div>
 </template>
 

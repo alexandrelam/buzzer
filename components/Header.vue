@@ -24,6 +24,10 @@ export default {
       localStorage.setItem("name", "default_username");
       localStorage.setItem("isAdmin", false);
       this.$fire.database.ref("users").child(this.$store.state.name).remove();
+      this.$fire.database
+        .ref("answer_points")
+        .child(this.$store.state.name)
+        .remove();
       this.setName("default_username");
     },
   },

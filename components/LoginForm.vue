@@ -54,6 +54,9 @@ export default {
         isAdmin: this.$store.state.isAdmin,
         buzz_time: "",
       });
+      this.$fire.database.ref("answer_points/" + this.name).set({
+        answer_points: Array(100).fill(0),
+      });
     },
   },
 };

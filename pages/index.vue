@@ -3,7 +3,7 @@
     <section class="content">
       <h1>Buzzer!</h1>
       <div class="wrapper">
-        <img src="/playing_games.svg" alt="playing_games" />
+        <img src="/buzzer/playing_games.svg" alt="playing_games" />
         <LoginForm class="login-form" />
       </div>
     </section>
