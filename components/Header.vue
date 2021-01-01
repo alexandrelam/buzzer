@@ -28,7 +28,7 @@ export default {
         .ref("answer_points")
         .child(this.$store.state.name)
         .remove();
-      this.setName("default_username");
+      this.setName("Merci de quitter l'application");
     },
   },
 };

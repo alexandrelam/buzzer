@@ -72,7 +72,8 @@ export default {
     },
     ISOtoTime(iso) {
       const time = iso.substr(11, 12);
-      const hour = time.substr(0, 2);
+      let hour = time.substr(0, 2);
+      hour = parseInt(hour) + 1; // yes I know this is a bad implementation what ever
       const minute = time.substr(3, 2);
       const seconds = time.substr(6, 2);
       const milli = time.substr(9, 3);

@@ -2,9 +2,18 @@
   <div class="title-wrapper">
     <h1>Bienvenue {{ $store.state.name }}</h1>
     <div class="question-wrapper">
-      <a-button size="small" icon="left" @click="previousQuestion"/>
-      <h2>Question {{ index_question }}</h2>
-      <a-button size="small" icon="right" @click="nextQuestion"/>
+      <a-button size="small" icon="left" @click="previousQuestion" />
+      <div class="question-wrapper" v-if="isAdmin">
+        <h2>Question</h2>
+        <a-input-number
+          :min="1"
+          :max="99"
+          :value="index_question"
+          @change="handleNumberChange"
+        />
+      </div>
+      <h2 v-else>Question {{ index_question }}</h2>
+      <a-button size="small" icon="right" @click="nextQuestion" />
     </div>
   </div>
 </template>
@@ -17,18 +26,26 @@ export default {
   methods: {
     previousQuestion() {
       if (this.index_question > 1) {
-        const messageRef = this.$fire.database.ref("index_question").set(this.index_question - 1);
+        const messageRef = this.$fire.database
+          .ref("index_question")
+          .set(this.index_question - 1);
       }
     },
     nextQuestion() {
-      if (this.index_question < 100) {
-        const messageRef = this.$fire.database.ref("index_question").set(this.index_question + 1);
+      if (this.index_question < 99) {
+        const messageRef = this.$fire.database
+          .ref("index_question")
+          .set(this.index_question + 1);
       }
+    },
+    handleNumberChange(value) {
+      const messageRef = this.$fire.database.ref("index_question").set(value);
     },
   },
   data() {
     return {
       index_question: 1,
+      isAdmin: localStorage.getItem("isAdmin"),
     };
   },
 };
