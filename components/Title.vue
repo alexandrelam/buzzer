@@ -2,7 +2,12 @@
   <div class="title-wrapper">
     <h1>Bienvenue {{ $store.state.name }}</h1>
     <div class="question-wrapper">
-      <a-button size="small" icon="left" @click="previousQuestion" />
+      <a-button
+        v-if="isAdmin"
+        size="small"
+        icon="left"
+        @click="previousQuestion"
+      />
       <div class="question-wrapper" v-if="isAdmin">
         <h2>Question</h2>
         <a-input-number
@@ -13,7 +18,12 @@
         />
       </div>
       <h2 v-else>Question {{ index_question }}</h2>
-      <a-button size="small" icon="right" @click="nextQuestion" />
+      <a-button
+        v-if="isAdmin"
+        size="small"
+        icon="right"
+        @click="nextQuestion"
+      />
     </div>
   </div>
 </template>
