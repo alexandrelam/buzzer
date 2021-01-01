@@ -6,7 +6,11 @@
       <BuzzerLeaderboard />
       <BuzzerButton />
     </div>
-    <ResetLeaderboardButton v-if="this.$store.state.isAdmin" class="btn-reset" />
+    <ScoreChart class="scorechart" />
+    <ResetLeaderboardButton
+      v-if="this.$store.state.isAdmin"
+      class="btn-reset"
+    />
   </div>
 </template>
 
@@ -16,6 +20,7 @@ import BuzzerButton from "../components/BuzzerButton";
 import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
 import ResetLeaderboardButton from "../components/ResetLeaderboardButton";
 import Title from "../components/Title";
+import ScoreChart from "../components/ScoreChart";
 
 export default {
   components: {
@@ -24,6 +29,7 @@ export default {
     BuzzerLeaderboard,
     ResetLeaderboardButton,
     Title,
+    ScoreChart,
   },
 };
 </script>
@@ -45,5 +51,11 @@ export default {
 .btn-reset {
   margin-top: 50px;
   margin-left: 100px;
+}
+
+.scorechart {
+  width: 400px;
+  height: 600px;
+  margin: auto;
 }
 </style>
