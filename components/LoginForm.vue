@@ -36,7 +36,6 @@ export default {
   methods: {
     ...mapMutations({
       setName: "setName",
-      setIsAdmin: "setIsAdmin",
     }),
     handleCheckChange(e) {
       this.isAdmin = e.target.checked;
@@ -47,11 +46,11 @@ export default {
     submitData() {
       this.setName(this.name);
       localStorage.setItem("name", this.name);
-      localStorage.setItem("isAdmin", this.isAdmin);
-      this.setIsAdmin(this.isAdmin);
+      if (this.isAdmin) {
+        localStorage.setItem("isAdmin", true);
+      }
       this.$fire.database.ref("users/" + this.name).set({
         username: this.name,
-        isAdmin: this.$store.state.isAdmin,
         buzz_time: "",
       });
       this.$fire.database.ref("answer_points/" + this.name).set({

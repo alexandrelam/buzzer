@@ -6,7 +6,6 @@ export default {
   data() {
     return {
       name: localStorage.getItem("name") || this.$store.state.name,
-      isAdmin: localStorage.getItem("isAdmin") || this.$store.state.isAdmin,
     };
   },
   methods: {
@@ -14,7 +13,6 @@ export default {
       const time = this.getTime();
       this.$fire.database.ref("users/" + localStorage.getItem("name")).set({
         username: this.name,
-        isAdmin: this.isAdmin,
         buzz_time: this.getTime(),
       });
     },

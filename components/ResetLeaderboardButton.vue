@@ -14,7 +14,6 @@ export default {
       firebase_data_array.map((user) => {
         this.$fire.database.ref("users/" + user[1].username).set({
           username: user[1].username,
-          isAdmin: user[1].isAdmin,
           buzz_time: "",
         });
       });

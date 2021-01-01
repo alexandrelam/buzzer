@@ -21,8 +21,8 @@ export default {
       setName: "setName",
     }),
     handleQuit() {
-      localStorage.setItem("name", "default_username");
-      localStorage.setItem("isAdmin", false);
+      localStorage.setItem("name", "Merci de quitter l'application");
+      localStorage.clear();
       this.$fire.database.ref("users").child(this.$store.state.name).remove();
       this.$fire.database
         .ref("answer_points")

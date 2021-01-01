@@ -7,10 +7,7 @@
       <BuzzerButton />
     </div>
     <ScoreChart class="scorechart" />
-    <ResetLeaderboardButton
-      v-if="this.$store.state.isAdmin"
-      class="btn-reset"
-    />
+    <ResetLeaderboardButton v-if="isAdmin" class="btn-reset" />
   </div>
 </template>
 
@@ -21,7 +18,6 @@ import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
 import ResetLeaderboardButton from "../components/ResetLeaderboardButton";
 import Title from "../components/Title";
 import ScoreChart from "../components/ScoreChart";
-
 export default {
   components: {
     Header,
@@ -30,6 +26,11 @@ export default {
     ResetLeaderboardButton,
     Title,
     ScoreChart,
+  },
+  data() {
+    return {
+      isAdmin: localStorage.getItem("isAdmin"),
+    };
   },
 };
 </script>
