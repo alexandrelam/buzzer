@@ -73,7 +73,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 10vh;
+  padding-top: 10px;
 }
 .question-wrapper {
   display: flex;

@@ -84,7 +84,6 @@ export default {
 
 .scorechart {
   width: 400px;
-  height: 600px;
   margin: auto;
 }
 </style>
