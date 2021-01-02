@@ -3,6 +3,7 @@ export default {
   ssr: false,
 
   // Publish to github pages (https://fr.nuxtjs.org/faq/github-pages/)
+
   /*
   router: {
     base: "/buzzer/"
@@ -10,7 +11,8 @@ export default {
   static: {
     prefix: "/buzzer/"
   },
-*/
+  */
+
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
 

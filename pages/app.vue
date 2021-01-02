@@ -6,8 +6,16 @@
       <BuzzerLeaderboard />
       <BuzzerButton />
     </div>
+    <div v-if="isAdmin" class="set-points-list">
+      <AdminSetPoints
+        v-for="(value, username) in connectedUser"
+        :key="username"
+        :name="username"
+        :question_index="question_index"
+      />
+    </div>
     <ScoreChart class="scorechart" />
-    <ResetLeaderboardButton v-if="isAdmin" class="btn-reset" />
+    <AdminResetButton v-if="isAdmin" class="btn-reset" />
   </div>
 </template>
 
@@ -15,22 +23,34 @@
 import Header from "../components/Header";
 import BuzzerButton from "../components/BuzzerButton";
 import BuzzerLeaderboard from "../components/BuzzerLeaderboard";
-import ResetLeaderboardButton from "../components/ResetLeaderboardButton";
+import AdminResetButton from "../components/AdminResetButton";
 import Title from "../components/Title";
 import ScoreChart from "../components/ScoreChart";
+import AdminSetPoints from "../components/AdminSetPoints";
+
 export default {
   components: {
     Header,
     BuzzerButton,
     BuzzerLeaderboard,
-    ResetLeaderboardButton,
+    AdminResetButton,
     Title,
     ScoreChart,
   },
   data() {
     return {
       isAdmin: localStorage.getItem("isAdmin"),
+      connectedUser: {},
+      question_index: 0,
     };
+  },
+  mounted() {
+    const messageRef = this.$fire.database.ref("answer_points");
+    messageRef.on("value", (snap) => {
+      this.connectedUser = snap.val();
+    });
+    const questionIndexRef = this.$fire.database.ref("index_question");
+    questionIndexRef.on("value", (snap) => (this.question_index = snap.val()));
   },
 };
 </script>
@@ -39,7 +59,15 @@ export default {
 .header {
   padding: 15px 25px;
 }
-
+.set-points-list {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  width: 800px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 .app-wrapper {
   margin-top: 50px;
   display: flex;

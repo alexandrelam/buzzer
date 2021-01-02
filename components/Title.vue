@@ -28,14 +28,20 @@
   </div>
 </template>
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   mounted() {
     const messageRef = this.$fire.database.ref("index_question");
     messageRef.on("value", (snap) => (this.index_question = snap.val()));
   },
   methods: {
+    ...mapMutations({
+      incrementQuestionChange: "incrementQuestionChange",
+    }),
     previousQuestion() {
       if (this.index_question > 1) {
+        this.incrementQuestionChange();
         const messageRef = this.$fire.database
           .ref("index_question")
           .set(this.index_question - 1);
@@ -43,6 +49,7 @@ export default {
     },
     nextQuestion() {
       if (this.index_question < 99) {
+        this.incrementQuestionChange();
         const messageRef = this.$fire.database
           .ref("index_question")
           .set(this.index_question + 1);

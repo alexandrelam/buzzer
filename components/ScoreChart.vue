@@ -42,19 +42,15 @@ export default {
       return arr.reduce((a, b) => a + b, 0);
     },
     parseData(raw_data) {
-      console.log("im in");
       let dataset = [];
       let labels = [];
       const raw_data_array = Object.entries(raw_data);
-      console.log(raw_data_array);
       raw_data_array.map((user) => {
         labels.push(user[0]);
-        dataset.push(this.sumArray(user[1].answer_points));
-        console.log(
-          `${user[0]}  -  score : ${this.sumArray(user[1].answer_points)}`
-        );
+        //dataset.push(this.sumArray(user[1].answer_points));
+        const answer_points_arr = Object.values(user[1].answer_points);
+        dataset.push(this.sumArray(answer_points_arr));
       });
-      console.log(dataset);
       let data = {
         labels: labels,
         datasets: [
