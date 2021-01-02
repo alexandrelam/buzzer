@@ -56,6 +56,7 @@ export default {
       }
     },
     handleNumberChange(value) {
+      this.incrementQuestionChange();
       const messageRef = this.$fire.database.ref("index_question").set(value);
     },
   },
