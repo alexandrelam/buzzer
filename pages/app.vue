@@ -64,7 +64,6 @@ export default {
   justify-content: center;
   margin: auto;
   margin-top: 30px;
-  width: 800px;
   flex-wrap: wrap;
   gap: 15px;
 }
