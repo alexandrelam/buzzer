@@ -1,9 +1,12 @@
 <script>
 import { Bar } from "vue-chartjs";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
+      index_question: 0,
+      raw_data: [],
       data: {
         labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
         datasets: [
@@ -35,21 +38,26 @@ export default {
   mounted() {
     this.renderChart(this.data, this.options);
     const messageRef = this.$fire.database.ref("answer_points");
-    messageRef.on("value", (snap) => this.parseData(snap.val()));
+    messageRef.on("value", (snap) => {
+      this.setRawData(snap.val());
+      this.incrementQuestionChange();
+    });
+    const IndexQuestionRef = this.$fire.database.ref("index_question");
+    IndexQuestionRef.on("value", (snap) => {
+      this.index_question = snap.val();
+    });
   },
-  methods: {
-    sumArray(arr) {
-      return arr.reduce((a, b) => a + b, 0);
-    },
-    parseData(raw_data) {
+  computed: mapState(["questionChange"]),
+  watch: {
+    questionChange: function (oldval, newval) {
       let dataset = [];
       let labels = [];
-      const raw_data_array = Object.entries(raw_data);
-      raw_data_array.map((user) => {
+      this.raw_data.map((user) => {
         labels.push(user[0]);
-        //dataset.push(this.sumArray(user[1].answer_points));
         const answer_points_arr = Object.values(user[1].answer_points);
-        dataset.push(this.sumArray(answer_points_arr));
+        dataset.push(
+          this.sumArray(answer_points_arr.slice(0, this.index_question + 1))
+        );
       });
       let data = {
         labels: labels,
@@ -62,6 +70,17 @@ export default {
       };
       this.data = data;
       this.renderChart(this.data, this.options);
+    },
+  },
+  methods: {
+    ...mapMutations({
+      incrementQuestionChange: "incrementQuestionChange",
+    }),
+    sumArray(arr) {
+      return arr.reduce((a, b) => a + b, 0);
+    },
+    setRawData(raw_data) {
+      this.raw_data = Object.entries(raw_data);
     },
   },
 };
