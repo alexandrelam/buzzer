@@ -1,7 +1,7 @@
 <template>
   <div class="admin-tag-wrapper">
     <h3>{{ name }}</h3>
-    <a-input-number id="inputNumber" v-model="value" @change="onChange" />
+    <a-input-number :id="name" v-model="value" @change="onChange" />
   </div>
 </template>
 <script>
