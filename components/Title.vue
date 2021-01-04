@@ -33,7 +33,10 @@ import { mapMutations } from "vuex";
 export default {
   mounted() {
     const messageRef = this.$fire.database.ref("index_question");
-    messageRef.on("value", (snap) => (this.index_question = snap.val()));
+    messageRef.on("value", (snap) => {
+      this.index_question = snap.val();
+      this.incrementQuestionChange();
+    });
   },
   methods: {
     ...mapMutations({
