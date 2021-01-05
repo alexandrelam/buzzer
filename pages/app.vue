@@ -14,7 +14,10 @@
         :question_index="question_index"
       />
     </div>
-    <ScoreChart class="scorechart" />
+    <div class="chart-message">
+      <ScoreChart class="scorechart" />
+      <AdminSetMessage class="admin-msg" />
+    </div>
     <AdminResetButton v-if="isAdmin" class="btn-reset" />
   </div>
 </template>
@@ -27,14 +30,17 @@ import AdminResetButton from "../components/AdminResetButton";
 import Title from "../components/Title";
 import ScoreChart from "../components/ScoreChart";
 import AdminSetPoints from "../components/AdminSetPoints";
+import AdminSetMessage from "../components/AdminSetMessage";
 
 export default {
   components: {
     Header,
-    BuzzerButton,
-    BuzzerLeaderboard,
-    AdminResetButton,
     Title,
+    BuzzerLeaderboard,
+    BuzzerButton,
+    AdminResetButton,
+    AdminSetPoints,
+    AdminSetMessage,
     ScoreChart,
   },
   data() {
@@ -83,6 +89,16 @@ export default {
 
 .scorechart {
   width: 400px;
-  margin: auto;
+}
+
+.chart-message {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.admin-msg {
+  margin-top: 30px;
+  margin-left: 65px;
 }
 </style>
