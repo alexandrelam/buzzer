@@ -14,9 +14,12 @@
         :question_index="question_index"
       />
     </div>
-    <div class="chart-message">
+    <div class="chart-message-wrapper">
       <ScoreChart class="scorechart" />
-      <AdminSetMessage class="admin-msg" />
+      <div class="message-wrapper">
+        <AdminSetMessage v-if="isAdmin" />
+        <ViewMessage v-else />
+      </div>
     </div>
     <AdminResetButton v-if="isAdmin" class="btn-reset" />
   </div>
@@ -31,6 +34,7 @@ import Title from "../components/Title";
 import ScoreChart from "../components/ScoreChart";
 import AdminSetPoints from "../components/AdminSetPoints";
 import AdminSetMessage from "../components/AdminSetMessage";
+import ViewMessage from "../components/ViewMessage";
 
 export default {
   components: {
@@ -41,6 +45,7 @@ export default {
     AdminResetButton,
     AdminSetPoints,
     AdminSetMessage,
+    ViewMessage,
     ScoreChart,
   },
   data() {
@@ -91,14 +96,14 @@ export default {
   width: 400px;
 }
 
-.chart-message {
+.chart-message-wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 65px;
 }
 
-.admin-msg {
+.message-wrapper {
   margin-top: 30px;
-  margin-left: 65px;
 }
 </style>
